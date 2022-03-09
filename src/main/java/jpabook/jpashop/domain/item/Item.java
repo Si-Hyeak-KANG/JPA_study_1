@@ -1,9 +1,12 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 //상속 관계 매핑 , 싱글 테이블 전략
@@ -21,6 +24,9 @@ public abstract class Item {
     private String name;
     private int price;
     private int stockQuantity;
+
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 }
 
 // @Inheritance(stratgy = InheritanceType. 1) SINGLE_TABLE 2) TABLE_PER_CLASS, 3) JOINED
