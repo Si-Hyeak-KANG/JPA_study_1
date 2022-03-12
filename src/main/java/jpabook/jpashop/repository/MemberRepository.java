@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepository {
 
-    // 스프링 부트가 EntityManager 주입
 //    @PersistenceContext
 //    private EntityManager em;
 
