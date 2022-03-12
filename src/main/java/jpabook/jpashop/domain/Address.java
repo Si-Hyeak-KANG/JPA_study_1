@@ -18,8 +18,8 @@ public class Address {
     }
 
     public Address(String city, String street, String zipcode) {
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
+        this.city = city; // 도시
+        this.street = street; // 거리
+        this.zipcode = zipcode; // 우편 번호
     }
 }
