@@ -1,6 +1,7 @@
 package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,11 +10,14 @@ import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
     // 스프링 부트가 EntityManager 주입
-    @PersistenceContext
-    private EntityManager em;
+//    @PersistenceContext
+//    private EntityManager em;
+
+    private final EntityManager em; // 이렇게도 쓸 수 있음 spring boot 효과
 
     // entity manager factory를 직접 주입 받는 방법 // 하지만 잘 안씀
     /*@PersistenceUnit
