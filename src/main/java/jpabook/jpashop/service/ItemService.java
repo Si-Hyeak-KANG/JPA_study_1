@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,20 @@ public class ItemService {
     @Transactional
     public void saveItem(Item item) {
         itemRepository.save(item);
+    }
+
+    // 변경 감지에 의해서 데이터를 변경하는 방법
+    @Transactional
+    public void updateItem(Long itemId, Book param) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setPrice(param.getPrice());
+        findItem.setName(param.getName());
+        findItem.setStockQuantity(param.getStockQuantity());
+
+        // itemRepository.save(findItem), merge, .. 아무것도 호출할 필요가 없음.
+
+        //spring의 transactional에 의해서 transaction 커밋 -> jpa flush를 날려서 영속성 컨텍트스에 있는 엔티티 중에 변경된 애가 뭔지 전부 검색
+
     }
 
     public List<Item> findItem() {
