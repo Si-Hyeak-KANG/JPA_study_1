@@ -48,7 +48,7 @@ public class ItemService {
         findItem.setStockQuantity(stockQuantity);
     } // 파라미터에 데이터를 Dto를 생성해서 활용 가능
 
-    public List<Item> findItem() {
+    public List<Item> findItems() {
         return itemRepository.findAll();
     }
 

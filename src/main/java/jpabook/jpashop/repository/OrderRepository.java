@@ -21,7 +21,7 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-    public List<Order> findAll(OrderSearch orderSearch) {
+    public List<Order> findAllByString(OrderSearch orderSearch) {
 
         return em.createQuery("select o from Order o join o.member m" +
                         " where o.status = :status" +
@@ -32,5 +32,4 @@ public class OrderRepository {
                 .getResultList();//jqpl join문 참고
         // myBatis는 xml을 통해서 동적쿼리로 처리할 수 있게 잘되어있음
     }
-
 }
