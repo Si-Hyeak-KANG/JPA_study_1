@@ -41,7 +41,8 @@ public class ItemService {
     @Transactional
     public void updateItem(Long itemId, String name, int price, int stockQuantity) {
         Item findItem = itemRepository.findOne(itemId);
-
+        // setter 없이 entity안에서 바로 추적할 수 있는 메서드를 만드는게 제일 베스트
+        // findItem.change(name, price, stockQuantity)
         findItem.setName(name);
         findItem.setPrice(price);
         findItem.setStockQuantity(stockQuantity);
