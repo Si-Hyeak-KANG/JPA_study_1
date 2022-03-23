@@ -21,6 +21,7 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    /*
     // 변경 감지에 의해서 데이터를 변경하는 방법
     @Transactional
     public void updateItem(Long itemId, Book param) {
@@ -34,6 +35,17 @@ public class ItemService {
         //spring의 transactional에 의해서 transaction 커밋 -> jpa flush를 날려서 영속성 컨텍트스에 있는 엔티티 중에 변경된 애가 뭔지 전부 검색
 
     }
+
+     */
+
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
+    } // 파라미터에 데이터를 Dto를 생성해서 활용 가능
 
     public List<Item> findItem() {
         return itemRepository.findAll();

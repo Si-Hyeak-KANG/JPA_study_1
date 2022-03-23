@@ -64,18 +64,20 @@ public class ItemController {
     }
 
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@PathVariable String itemId, @ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
 
         // 아래 book이 준영속 entity -> JPA가 관리하지않음 -> 변견 감지 X -> 아무리 바꿔도 db에 변화 X
-        Book book = new Book();
-        book.setId(form.getId()); // 객체는 새로운 개체지만, JPA가 식별할 수 있는 id가 세팅됨으로써 ~~ 이런걸 준영속 엔티티에 해당
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
+//        Book book = new Book();
+//        book.setId(form.getId()); // 객체는 새로운 개체지만, JPA가 식별할 수 있는 id가 세팅됨으로써 ~~ 이런걸 준영속 엔티티에 해당
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//
+//        itemService.saveItem(book);
 
-        itemService.saveItem(book);
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
     }
